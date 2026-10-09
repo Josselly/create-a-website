@@ -1,0 +1,116 @@
+/* Nymera — near-black abyss sampled from the frame, lit by the bell's violet.
+   Unlike a glass-on-video hero, this design puts solid WHITE cards on the footage,
+   so the palette carries a real light surface alongside the dark one. */
+:root {
+  --abyss: #03040f;
+  --abyss-deep: #000208;
+
+  --ink: #ffffff;
+  --ink-soft: rgba(255, 255, 255, 0.68);
+  --ink-faint: rgba(255, 255, 255, 0.44);
+
+  --violet: #b06cf0;
+  --violet-deep: #7c3aed;
+  --magenta: #e964d8;
+
+  --card: #ffffff;
+  --card-ink: #12101c;
+  --card-ink-soft: #6b6880;
+
+  --hair: rgba(255, 255, 255, 0.16);
+  --hair-soft: rgba(255, 255, 255, 0.09);
+
+  --ease: cubic-bezier(0.19, 1, 0.22, 1);
+  --gutter: clamp(18px, 2.4vw, 40px);
+  --radius: 16px;
+
+  --font: 'Space Grotesk', system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+* { margin: 0; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  min-height: 100svh;
+  background: var(--abyss-deep);
+  color: var(--ink);
+  font-family: var(--font);
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+img, svg, video { display: block; max-width: 100%; }
+
+button { font: inherit; color: inherit; border: 0; background: none; cursor: pointer; }
+
+a { color: inherit; text-decoration: none; }
+
+:focus-visible {
+  outline: 2px solid var(--violet);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 12px;
+  z-index: 100;
+  padding: 10px 16px;
+  border-radius: 999px;
+  background: var(--violet);
+  color: #12101c;
+  font-size: 14px;
+  font-weight: 500;
+}
+.skip-link:focus { left: 12px; }
+
+/* Two button voices in this reference: a solid violet pill in the nav, and an
+   outline pill with a violet arrow disc for the hero CTA. */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  border-radius: 999px;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  transition: transform 0.4s var(--ease), background-color 0.4s var(--ease),
+    border-color 0.4s var(--ease), box-shadow 0.4s var(--ease);
+}
+
+.btn--violet {
+  padding: 0.72em 1.4em;
+  background: var(--violet);
+  color: #17102a;
+  font-weight: 500;
+  box-shadow: 0 8px 26px rgba(176, 108, 240, 0.32);
+}
+.btn--violet:hover { transform: translateY(-1px); background: #c088f5; }
+
+.btn--outline {
+  padding: 0.42em 0.42em 0.42em 1.35em;
+  border: 1px solid var(--hair);
+  background: rgba(255, 255, 255, 0.045);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #fff;
+}
+.btn--outline:hover { border-color: rgba(255, 255, 255, 0.34); background: rgba(255, 255, 255, 0.09); }
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
